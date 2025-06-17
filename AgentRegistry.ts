@@ -49,7 +49,7 @@ AgentRegistry {
   static getAgent(name: string) {
     const config = this.agents[name];
     return createReactAgent({
-      llm: this.models[config.modelName],
+      llm: this.models[config.llmName],
       tools: config.tools.map(t => this.tools[t])
     });
   }
@@ -58,8 +58,8 @@ AgentRegistry {
 // Usage Example
 async function main() {
   // Register Components
-  AgentRegistry.registerModel('google-flash', {
-    model: 'gemini-2.0-flash',
+  AgentRegistry.registerAgent('gemini-2.0-flash', {
+    llmName: 'gemini-2.0-flash',
     apiKey: 'AIzaSyCJAbF_jL9r7UrSnt6KbxfPh7WeJSXkVYA',
     maxOutputTokens: 2048
   });
@@ -80,7 +80,7 @@ async function main() {
 
 
   AgentRegistry.registerAgent('weather-agent', {
-    modelName: 'google-flash',
+    llmName: 'gemini-2.0-flash',
     tools: ['search']
   });
 

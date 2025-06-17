@@ -5,9 +5,10 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import {marked} from 'marked';
 import {markedTerminal} from 'marked-terminal';
 import {z} from "zod";
+import {LLMFactory} from "./LLMFactory.ts"
+import { BaseMessageLike } from "@langchain/core/messages";
 
-
-// 
+// Markedown in terminal.  
 marked.use(markedTerminal());
 
 //init llm 
